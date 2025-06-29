@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .slider::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-purple-600 rounded-full cursor-pointer shadow-lg;
+  }
+
+  .slider::-moz-range-thumb {
+    @apply w-5 h-5 bg-purple-600 rounded-full cursor-pointer border-0 shadow-lg;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-effect-dark {
+    @apply bg-gray-900/10 backdrop-blur-md border border-gray-700/20;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full hover:bg-gray-400 dark:hover:bg-gray-500;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+}
+
+.dark * {
+  scrollbar-color: theme('colors.gray.600') theme('colors.gray.800');
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glass morphism effects */
+.glass-card {
+  @apply bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-white/20 dark:border-gray-700/50;
+}
+
+.glass-card:hover {
+  @apply bg-white/70 dark:bg-gray-800/70 shadow-xl;
+}
+
+/* Button hover effects */
+.btn-hover-scale {
+  @apply transition-transform duration-200 hover:scale-105 active:scale-95;
+}
+
+.btn-hover-glow {
+  @apply transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/25;
+}
+
+/* Animated Heart */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Pulsing animation for heart */
+@keyframes pulse-heart {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+/* Coffee button hover effect */
+.coffee-button {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.coffee-button:hover {
+  @apply shadow-2xl;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.coffee-button:active {
+  transform: translateY(0) scale(1.02);
+}
